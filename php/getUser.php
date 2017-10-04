@@ -1,4 +1,4 @@
 <?php
     session_start();
-    echo json_encode($_SESSION['user']);
+    echo isset($_SESSION['user']) ? json_encode($_SESSION['user']) : 'null';
 ?>

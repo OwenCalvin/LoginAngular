@@ -1,4 +1,4 @@
-app.factory('factServer', function($rootScope, $q, $http) {
+app.factory('factServer', function($rootScope, $q, $location, $http) {
     var obj = {
         IsLogged: function() {
             var p = $q.defer();
@@ -10,7 +10,6 @@ app.factory('factServer', function($rootScope, $q, $http) {
         GetLogin: function() {
             var p = $q.defer();
             this.Request('GET', 'getUser', null).then(function(data){
-                console.log(data);
                 p.resolve(data);
             });
             return p.promise;
@@ -32,8 +31,8 @@ app.factory('factServer', function($rootScope, $q, $http) {
             }
             var that = this;
             this.Request('POST', 'connect', obj).then(function(data) {
-                that.SetSuccess(data);
                 p.resolve(data);
+                that.SetSuccess(data);
             });
             return p.promise;
         },
@@ -47,8 +46,8 @@ app.factory('factServer', function($rootScope, $q, $http) {
             }
             var that = this;
             this.Request('POST', 'register', obj).then(function(data) {
-                that.SetSuccess(data);
                 p.resolve(data);
+                that.SetSuccess(data);
             });
             return p.promise;
         },
@@ -56,8 +55,8 @@ app.factory('factServer', function($rootScope, $q, $http) {
             var p = $q.defer();
             var that = this;
             this.Request('GET', 'disconnect').then(function(data){
-                that.SetSuccess(data);
                 p.resolve(data);
+                that.SetSuccess(data);
             });
             return p.promise;
         },
@@ -82,10 +81,18 @@ app.factory('factServer', function($rootScope, $q, $http) {
             return p.promise;
         },
         SetSuccess: function(data){
-            console.log(data);
             if(data.status == 'success'){
                 this.SetLocalLogin();
             }
+        },
+        RedirectIfLogged: function() {
+            if($rootScope.logged){
+                this.RedirectToHome();
+            }
+        },
+        RedirectToHome: function() {
+            $location.url('/');
+            $location.replace();
         }
     }   
     return obj;

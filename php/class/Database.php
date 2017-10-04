@@ -15,7 +15,7 @@
         }
         
         public static function getConnection(){
-            return new PDO('mysql:host=localhost;dbname=weighty', 'root', 'root');
+            return new PDO('mysql:host=localhost;dbname=weighty', 'root', '');
         }
     }
 ?>

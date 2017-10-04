@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Weighty</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body ng-app="weightyApp" ng-controller="ctrlLoad">
+    <header ng-controller="ctrlHeader" ng-init="">
+        <span ng-repeat="i in options">
+            <a ng-href="#!{{i.url}}" ng-bind="i.name" ng-hide="logged"></a>
+        </span>
+        <span>
+            <button ng-click="disconnect()" ng-show="logged">Disconnect</button>
+        </span>
+    </header>
+    <div ng-bind="user.username"></div>
+    <div ng-view></div>
+
+    <script src="js/src/jquery.min.js"></script>
+    <script src="js/src/angular.min.js"></script>
+    <script src="js/src/angular-route.min.js"></script>
+    <script src="js/ajaxRequest.js"></script>
+    <script src="js/mainAngular.js"></script>
+    <script src="js/angular/factory/factServer.js"></script>
+    <script src="js/angular/controller/ctrlHeader.js"></script>
+    <script src="js/angular/controller/ctrlLoad.js"></script>
+    <script src="js/angular/controller/ctrlLogin.js"></script>
+    <script src="js/angular/controller/ctrlRegister.js"></script>
+</body>
+</html>

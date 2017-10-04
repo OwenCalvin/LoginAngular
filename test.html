@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Weighty</title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <div id="app">
+            <div id="username"> 
+                {{username}}
+                {{email}}
+            </div>
+            <div id="msg"> {{message}} </div>
+            <button id="disconnect" @click="disconnect">Disconnect</button>
+            
+            <div id="login">
+                <input type="text" id="txtLog" placeholder="Username or e-mail">
+                <input type="password" id="pswPassword" placeholder="Password">
+                <button id="connect" @click="connect">Connect</button>  
+            </div>
+
+            <div id="register">
+                <input type="text" id="rtxtUsername" placeholder="Username">
+                <input type="email" id="rmailEmail" placeholder="E-mail">
+                <input type="password" id="rpswPassword" placeholder="Password">
+                <input type="password" id="rpswPasswordConfirm" placeholder="Confirm password">
+                <button id="connect" @click="register">Register</button>  
+            </div>
+        </div>
+
+        <script src="js/src/jquery.min.js"></script>
+        <script src="https://unpkg.com/vue"></script>
+        <script defer>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    username: null,
+                    email: null,
+                    message: null
+                },
+                methods: {
+                    getUser: function() {
+                        request('php/getUser.php', function(data) {
+                            console.log(data);
+                            if(!!data){
+                                app.username = data.username;
+                                app.email = data.email;
+                            } else {
+                                app.email = app.username = null;
+                            }
+                        }, 'POST');
+                    },
+                    disconnect: function () {
+                        request('php/disconnect.php', function(data) {
+                            app.getUser();
+                            app.message = data.message;
+                        }, 'POST');
+                    },
+                    connect: function(displayMessage) {
+                        request('php/connection.php?log=' + $('#txtLog').val() + '&password=' + $('#pswPassword').val(), function(data) {
+                            switch(data.status){
+                                case 'success':
+                                case 'already':
+                                    app.getUser();
+                                default:
+                                    if(displayMessage) {
+                                        app.message = data.message;
+                                    }
+                                    break;
+                            }
+                        }, 'POST');
+                    },
+                    register: function() {
+                        request('php/register.php?username=' + $('#rtxtUsername').val() + '&password=' + $('#rpswPassword').val() + '&email=' + $('#rmailEmail').val() + '&passwordConfirm=' + $('#rpswPasswordConfirm').val(), function(data) {
+                            app.getUser();
+                            app.message = data.message;
+                        }, 'POST');
+                    },
+                    isLogged: function() {
+                        return app.username != null && app.email != null;
+                    }
+                }
+            });
+            
+            app.getUser();
+
+            function request(url, callback, type) {
+                $.ajax({
+                    url: url.split('?')[0],
+                    type: type,
+                    data: url.split('?')[1],
+                    success: function(data) {
+                        callback(JSON.parse(data));
+                    },
+                    error: function(data) { 
+                        console.log('Error ' + data) ;
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

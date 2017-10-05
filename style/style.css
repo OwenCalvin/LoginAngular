@@ -1,10 +1,13 @@
 *{
     font-family: Roboto;
 }
-
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-    overflow: hidden;
     margin: 0;
+    margin-bottom: 250px;
 }
 
 header{
@@ -12,22 +15,20 @@ header{
     justify-content: space-between;    
     background: rgb(240, 240, 240);
     padding: 20px 0px;
-    z-index: 1;
 }
 
 footer{
     width: 100%;
-    display: flex;
-    justify-content: space-between;    
     background: rgb(20, 20, 20);
     padding: 20px 0px;
     position: absolute;
+    right: 0;
     bottom: 0;
-    z-index: -1;
-    height: 30px;
+    left: 0;
+    height: 60px;
 }
 
-#headerTitle{
+.title{
     margin-left: 20px;
     font-size: 2em;
     border: none;
@@ -70,24 +71,24 @@ a:hover, header button:hover{
 }
 
 #message{
-    position: absolute;
+    position: fixed;
     text-align: center;
     width: 100%;
     color: white;
     font-weight: bold;
-    font-size: 2em;
-    bottom: 0;
-    transition: bottom .5s;
+    font-size: 2.5em;
+    top: 0;
+    transition: top .2s;
+    z-index: 999;
 }
 
 #message span{
     display: inline-block;
     padding: 20px 0;
-    z-index: 1;
 }
 
 #message.ng-hide {
-    bottom: -3em;
+    top: -100px;
 }
 
 .errorMessage {
@@ -95,23 +96,22 @@ a:hover, header button:hover{
 }
 
 .successMessage {
-    background: #2EB872;
+    background: #3CD170;
 }
 
-.formLogin{
-    display: flex;
+.form-login{
     width: 100%;
-    justify-content: space-between;
-    flex-direction: row;
+}
+
+.content{
+    width: 100%;
 }
 
 .form {
     width: 40%;
-    position: fixed;
-    left: 50%;
-    top: 50vh;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: -1;
+    display: block;
+    margin: auto;
+    margin-top: 100px;
 }
 
 @media screen and (max-width: 640px) {
@@ -139,49 +139,72 @@ a {
     margin-left: 20px;
 }
 
-#desc{
+.desc{
     font-weight: bold;
     color: rgb(50, 50, 50);
     font-size: 3em;
     margin-bottom: 30px;
 }
 
-#txtWeight{
+.input-text {
     outline: none;
     position: relative;
-    z-index: 999;
-    width: 100%;
-    display: block;
-    margin: auto;
     border: 3px solid transparent;
     background: rgb(230, 230, 230);
     border-radius: 15px;
-    padding: 15px 0;
-    text-align: center;
+    padding: 20px 0;
+    margin: auto;
     font-size: 2em;
-    margin-bottom: 60px;
     color: rgb(68, 68, 68);
-    outline: none;
     transition: border-color .2s;
+    position: relative;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.btn-form {
+    display: block;
+    margin: auto;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 10px 50px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.form-submit{
+    margin-top: 200px;
 }
 
 #btnSubmit{
-    margin: auto;
     background: transparent;
-    font-size: 2em;
     border: 5px solid #ff304f;
     color: #ff304f;
-    font-weight: bold;
-    padding: 10px 50px;
-    border-radius: 100px;
-    cursor: pointer;
 }
 
 #btnlogin{
     border-color: transparent;
 }
 
-header #headerTitle:hover {
+
+header #headerTitle:hover, #btnlogin:hover{
     background: transparent;
     color: rgb(50, 50, 50);
+}
+
+.form-login .input-text, .form-register .input-text {
+    text-align: left;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.form-login .btn-form, .form-register .btn-form {
+    background: rgb(230, 230, 230);
+    color: rgb(50, 50, 50);
+    padding: 15px 50px;
+    border: none;
 }

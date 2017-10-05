@@ -6,7 +6,7 @@ app.factory('factMessage', function($rootScope,$timeout) {
             $rootScope.displayMessage = true;
             $timeout(function(){
                 $rootScope.displayMessage = false;
-            }, 2000);
+            }, 1000);
         }
     }   
     return obj;

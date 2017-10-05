@@ -12,14 +12,14 @@
             <span ng-bind="message"></span>
         </div>
         <header ng-controller="ctrlHeader">
-            <a href="#!" id="headerTitle" class="noselect">Weighty</a>
+            <a href="#!" id="headerTitle" class="title" class="noselect">Weighty</a>
             <div id="headerButtons" ng-hide="logged == null">
+                <span ng-bind="user.username" class="title"></span>
                 <span ng-repeat="i in options">
                     <a class="noselect" ng-href="#!{{i.url}}" ng-bind="i.name" id="btn{{i.url}}"></a>
                 </span>
             </div>
         </header>
-        <div ng-bind="user.username"></div>
         <div ng-view class="content"></div>
         <footer>
         </footer>

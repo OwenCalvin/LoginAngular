@@ -6,6 +6,6 @@ app.config(function($routeProvider, $locationProvider) {
     .when('/', {templateUrl: templateFolder + 'Submit.html'})
     .when('/login', {templateUrl: templateFolder + 'Login.html', controller: 'ctrlLogin'})
     .when('/register', {templateUrl: templateFolder + 'Register.html', controller: 'ctrlRegister'})
-    .when('/disconnect', {templateUrl: templateFolder + 'Empty.html', controller: 'ctrlDisconnect'})
+    .when('/disconnect', {templateUrl: templateFolder + 'Submit.html', controller: 'ctrlDisconnect'})
     .otherwise({redirectTo: '/'});
 });

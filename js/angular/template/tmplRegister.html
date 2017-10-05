@@ -1,7 +1,19 @@
-<div class="form">
-    <input type="text" placeholder="Username" ng-model="username">
-    <input type="email" placeholder="E-mail" ng-model="email">
-    <input type="password" placeholder="Password" ng-model="password">
-    <input type="password" placeholder="Confirm password" ng-model="passwordConfirm">
-    <button ng-click="register();">Register</button>
+<div class="form form-register">
+    <span>
+        <div class="desc">Username</div>
+        <input type="text" ng-model="username" class="input-text">
+    </span>
+    <span>
+        <div class="desc">E-mail</div>
+        <input type="email" ng-model="email" class="input-text">
+    </span>
+    <span>
+        <div class="desc">Password</div>
+        <input type="password" ng-model="password" class="input-text">
+    </span>
+    <span>
+        <div class="desc">Confirm</div>
+        <input type="password" ng-model="passwordConfirm" class="input-text">
+    </span>
+    <button ng-click="register();" class="btn-form">Register</button>
 </div>

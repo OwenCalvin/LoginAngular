@@ -1,4 +1,4 @@
-app.factory('factServer', function($rootScope, $q, $location, $http) {
+app.factory('factServer', function($rootScope, $q, $location, $http, factMessage) {
     var obj = {
         IsLogged: function() {
             var p = $q.defer();
@@ -84,6 +84,7 @@ app.factory('factServer', function($rootScope, $q, $location, $http) {
         },
         RedirectIfLogged: function() {
             if($rootScope.logged){
+                factMessage.SetMessage('You are already logged', 'error');
                 this.RedirectToHome();
             }
         },

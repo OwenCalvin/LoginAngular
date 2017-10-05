@@ -1,0 +1,187 @@
+*{
+    font-family: Roboto;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;    
+    background: rgb(240, 240, 240);
+    padding: 20px 0px;
+    z-index: 1;
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;    
+    background: rgb(20, 20, 20);
+    padding: 20px 0px;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    height: 30px;
+}
+
+#headerTitle{
+    margin-left: 20px;
+    font-size: 2em;
+    border: none;
+}
+
+header a, header button{
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    border: 4px solid rgb(90, 90, 90);;
+    color: rgb(90, 90, 90);;
+    border-radius: 100px;
+    width: 150px;
+    text-align: center;
+    padding: 7px 0;
+    transition: all .2s;
+}
+
+#headerButtons {
+    margin-right: 20px;
+}
+
+a:hover, header button:hover{
+    background: rgb(90, 90, 90);
+    color: white;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#message{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    bottom: 0;
+    transition: bottom .5s;
+}
+
+#message span{
+    display: inline-block;
+    padding: 20px 0;
+    z-index: 1;
+}
+
+#message.ng-hide {
+    bottom: -3em;
+}
+
+.errorMessage {
+    background: #ff304f;
+}
+
+.successMessage {
+    background: #2EB872;
+}
+
+.formLogin{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.form {
+    width: 40%;
+    position: fixed;
+    left: 50%;
+    top: 50vh;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -1;
+}
+
+@media screen and (max-width: 640px) {
+    .bloc {
+      display:block;
+      clear:both;
+    }
+}
+
+button {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.white-button {
+    background: white;
+    color: #30ACFF;
+    border-radius: 100px;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 1.3em;
+    margin-left: 20px;
+}
+
+#desc{
+    font-weight: bold;
+    color: rgb(50, 50, 50);
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+
+#txtWeight{
+    outline: none;
+    position: relative;
+    z-index: 999;
+    width: 100%;
+    display: block;
+    margin: auto;
+    border: 3px solid transparent;
+    background: rgb(230, 230, 230);
+    border-radius: 15px;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 60px;
+    color: rgb(68, 68, 68);
+    outline: none;
+    transition: border-color .2s;
+}
+
+#btnSubmit{
+    margin: auto;
+    background: transparent;
+    font-size: 2em;
+    border: 5px solid #ff304f;
+    color: #ff304f;
+    font-weight: bold;
+    padding: 10px 50px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+#btnlogin{
+    border-color: transparent;
+}
+
+header #headerTitle:hover {
+    background: transparent;
+    color: rgb(50, 50, 50);
+}

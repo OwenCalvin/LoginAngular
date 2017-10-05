@@ -23,7 +23,7 @@
                     
                         $_SESSION['user'] = new User($username, $email);
                         
-                        $message->setSuccess($_SESSION['user']);
+                        $message->setMessage('success', 'You are registered', $_SESSION['user']);
                     } else {
                         $message->setMessage('exist', 'This e-mail exist, please choose another one');
                     }

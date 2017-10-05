@@ -3,7 +3,7 @@ app.factory('factServer', function($rootScope, $q, $location, $http) {
         IsLogged: function() {
             var p = $q.defer();
             this.GetLogin().then(function(data){
-                p.resolve(data == null);
+                p.resolve(data != null);
             });
             return p.promise;
         },
@@ -32,7 +32,6 @@ app.factory('factServer', function($rootScope, $q, $location, $http) {
             var that = this;
             this.Request('POST', 'connect', obj).then(function(data) {
                 p.resolve(data);
-                that.SetSuccess(data);
             });
             return p.promise;
         },
@@ -47,7 +46,6 @@ app.factory('factServer', function($rootScope, $q, $location, $http) {
             var that = this;
             this.Request('POST', 'register', obj).then(function(data) {
                 p.resolve(data);
-                that.SetSuccess(data);
             });
             return p.promise;
         },
@@ -56,7 +54,6 @@ app.factory('factServer', function($rootScope, $q, $location, $http) {
             var that = this;
             this.Request('GET', 'disconnect').then(function(data){
                 p.resolve(data);
-                that.SetSuccess(data);
             });
             return p.promise;
         },
@@ -93,6 +90,10 @@ app.factory('factServer', function($rootScope, $q, $location, $http) {
         RedirectToHome: function() {
             $location.url('/');
             $location.replace();
+        },
+        SetLocalDisconnect: function() {
+            $rootScope.user = null;
+            $rootScope.logged = false;
         }
     }   
     return obj;

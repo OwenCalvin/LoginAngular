@@ -1,6 +1,11 @@
-<div>
-    <input type="text" placeholder="Username or e-mail" ng-model="log">
-    <input type="password" placeholder="Password" ng-model="password">
-    <button ng-click="login()">Login</button>
-    <div ng-bind="message"></div>
+<div class="form formLogin">
+    <span>
+        <div id="desc">Username</div>
+        <input type="text" id="txtWeight" placeholder="Username or e-mail" ng-model="log">
+    </span>
+    <span>
+        <div id="desc">Password</div>
+        <input type="password" id="txtWeight" placeholder="Password" ng-model="password">
+    </span>
+    <button ng-click="login()" id="btnLogin">Login</button>
 </div>

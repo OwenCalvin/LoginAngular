@@ -15,7 +15,7 @@
                 $row = $row->fetch();
                 if(password_verify($_PARAM['password'], $row['password'])){
                     $_SESSION['user'] = new User($row['username'], $row['email']);
-                    $message->setSuccess($_SESSION['user']);
+                    $message->setMessage('success', 'You are connected', $_SESSION['user']);
                 } else {
                     $message->setMessage('wrong', 'Wrong username or password');
                 }

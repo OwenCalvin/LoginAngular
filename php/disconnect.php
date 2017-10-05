@@ -7,7 +7,7 @@
 
     if(isset($_SESSION['user'])){
         $_SESSION['user'] = null;
-        $message->setSuccess();
+        $message->setMessage('success', 'Disconnected');
     } else if(!isset($_SESSION['user'])){
         $message->setMessage('notconnected', 'You aren\'t connected');
     } else {

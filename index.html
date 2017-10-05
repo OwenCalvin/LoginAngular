@@ -4,28 +4,39 @@
     <meta charset="utf-8">
     <title>Weighty</title>
     <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
 </head>
 <body ng-app="weightyApp" ng-controller="ctrlLoad">
-    <header ng-controller="ctrlHeader" ng-init="">
-        <span ng-repeat="i in options">
-            <a ng-href="#!{{i.url}}" ng-bind="i.name" ng-hide="logged"></a>
-        </span>
-        <span>
-            <button ng-click="disconnect()" ng-show="logged">Disconnect</button>
-        </span>
-    </header>
-    <div ng-bind="user.username"></div>
-    <div ng-view></div>
+    <div class="view">
+        <div id="message" ng-show="displayMessage" ng-class="classMessage">
+            <span ng-bind="message"></span>
+        </div>
+        <header ng-controller="ctrlHeader">
+            <a href="#!" id="headerTitle" class="noselect">Weighty</a>
+            <div id="headerButtons" ng-hide="logged == null">
+                <span ng-repeat="i in options">
+                    <a class="noselect" ng-href="#!{{i.url}}" ng-bind="i.name" id="btn{{i.url}}"></a>
+                </span>
+            </div>
+        </header>
+        <div ng-bind="user.username"></div>
+        <div ng-view class="content"></div>
+        <footer>
+        </footer>
+    </div>
 
     <script src="js/src/jquery.min.js"></script>
     <script src="js/src/angular.min.js"></script>
     <script src="js/src/angular-route.min.js"></script>
+    <script src="js/src/angular-animate.min.js"></script>
     <script src="js/ajaxRequest.js"></script>
     <script src="js/mainAngular.js"></script>
     <script src="js/angular/factory/factServer.js"></script>
+    <script src="js/angular/factory/factMessage.js"></script>
     <script src="js/angular/controller/ctrlHeader.js"></script>
     <script src="js/angular/controller/ctrlLoad.js"></script>
     <script src="js/angular/controller/ctrlLogin.js"></script>
     <script src="js/angular/controller/ctrlRegister.js"></script>
+    <script src="js/angular/controller/ctrlDisconnect.js"></script>
 </body>
 </html>

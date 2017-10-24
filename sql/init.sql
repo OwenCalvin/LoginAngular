@@ -1,5 +1,5 @@
-CREATE DATABASE weighty;
-USE weighty;
+CREATE DATABASE LoginAngular;
+USE LoginAngular;
 
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
@@ -8,11 +8,4 @@ CREATE TABLE users (
     password VARCHAR(60) NOT NULL,
     admin BOOLEAN NOT NULL DEFAULT false,
     CONSTRAINT PK_id PRIMARY KEY (id)
-);
-
-CREATE TABLE weights (
-    id_tblUsers INT NOT NULL,
-    weight VARCHAR(3) NOT NULL,
-    day DATE NOT NULL,
-    CONSTRAINT FK_id_tblUsers FOREIGN KEY (id_tblUsers) REFERENCES users(id)
 );
